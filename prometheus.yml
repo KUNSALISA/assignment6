@@ -1,0 +1,31 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'pushgateway'
+    static_configs:
+      - targets: ['pushgateway:9091']
+
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  - job_name: 'teacher-service'
+    metrics_path: /metrics
+    static_configs:
+      - targets: ['teacher-service:5001']
+
+  - job_name: 'student-service'
+    metrics_path: /metrics
+    static_configs:
+      - targets: ['student-service:5002']
+
+  - job_name: 'course-service'
+    metrics_path: /metrics
+    static_configs:
+      - targets: ['course-service:5003']
+
+  - job_name: 'attendance-service'
+    metrics_path: /metrics
+    static_configs:
+      - targets: ['attendance-service:5004']

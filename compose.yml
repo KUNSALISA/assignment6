@@ -1,0 +1,221 @@
+networks:
+  webproxy:
+    name: webproxy
+    driver: bridge
+  microservice:
+    name: microservice
+    driver: bridge
+
+services:
+
+  reverse-proxy:
+    build:
+      context: ./reverse-proxy
+      dockerfile: Dockerfile
+    container_name: reverse-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - ./reverse-proxy/nginx.conf:/etc/nginx/nginx.conf:ro
+    networks:
+      - webproxy
+
+  api-gateway:
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
+    container_name: api-gateway
+    ports:
+      - "8081:8081"
+    volumes:
+      - ./api-gateway/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - teacher-service
+      - student-service
+      - course-service
+      - attendance-service
+    networks:
+      - webproxy
+      - microservice
+
+  webapp:
+    build: ./webapp
+    container_name: webapp
+    restart: always
+    networks:
+      - webproxy
+      - microservice
+    ports:
+      - "5173:5173"
+
+  teacher-service:
+    build:
+      context: ./teacher-service
+    container_name: teacher-service
+    ports:
+      - "5001:5001"
+    environment:
+      - DB_HOST=teacher-db
+      - DB_PORT=5432
+      - DB_USER=user
+      - DB_PASSWORD=password
+      - DB_NAME=teacherdb
+    depends_on:
+      - teacher-db
+    networks:
+      - microservice
+
+  teacher-db:
+    image: postgres:13
+    container_name: teacher-db
+    environment:
+      POSTGRES_DB: teacherdb
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - teacher-data:/var/lib/postgresql/data
+      - ./teacher-service/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - microservice
+
+  student-service:
+    build:
+      context: ./student-service
+    container_name: student-service
+    ports:
+      - "5002:5002"
+    environment:
+      - DB_HOST=student-db
+      - DB_PORT=5432
+      - DB_USER=user
+      - DB_PASSWORD=password
+      - DB_NAME=studentdb
+    depends_on:
+      - student-db
+    networks:
+      - microservice
+
+  course-service:
+    build:
+      context: ./course-service
+    container_name: course-service
+    ports:
+      - "5003:5003"
+    environment:
+      - DB_HOST=course-db
+      - DB_PORT=5432
+      - DB_USER=user
+      - DB_PASSWORD=password
+      - DB_NAME=coursedb
+    depends_on:
+      - course-db
+    networks:
+      - microservice
+
+  attendance-service:
+    build:
+      context: ./attendance-service
+    container_name: attendance-service
+    ports:
+      - "5004:5004"
+    environment:
+      - DB_HOST=attendance-db
+      - DB_PORT=5432
+      - DB_USER=user
+      - DB_PASSWORD=password
+      - DB_NAME=attendancedb
+    depends_on:
+      - attendance-db
+    networks:
+      - microservice
+
+  student-db:
+    image: postgres:13
+    container_name: student-db
+    environment:
+      POSTGRES_DB: studentdb
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5433:5432"
+    volumes:
+      - student-data:/var/lib/postgresql/data
+      - ./student-service/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - microservice
+
+  course-db:
+    image: postgres:13
+    container_name: course-db
+    environment:
+      POSTGRES_DB: coursedb
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5434:5432"
+    volumes:
+      - course-data:/var/lib/postgresql/data
+      - ./course-service/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - microservice
+
+  attendance-db:
+    image: postgres:13
+    container_name: attendance-db
+    environment:
+      POSTGRES_DB: attendancedb
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5435:5432"
+    volumes:
+      - attendance-data:/var/lib/postgresql/data
+      - ./attendance-service/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - microservice
+
+  pushgateway:
+    image: prom/pushgateway
+    container_name: pushgateway
+    ports:
+      - "9091:9091"
+    networks:
+      - microservice
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    networks:
+      - microservice
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    networks:
+      - microservice
+
+  jenkins:
+    build: .
+    container_name: jenkins-nodejs
+    ports:                     
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+    networks:
+      - microservice
+
+volumes:
+  teacher-data:
+  student-data:
+  course-data:
+  attendance-data:
+  jenkins_home:

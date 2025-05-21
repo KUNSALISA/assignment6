@@ -1,0 +1,63 @@
+.daily-detail-container {
+  padding: 2rem;
+  font-family: 'Sarabun', sans-serif;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  background-color: #f4fff4;
+}
+
+.daily-detail-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+}
+
+.daily-detail-table th,
+.daily-detail-table td {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.daily-detail-table th {
+  background-color: #d0f0d0;
+  font-weight: bold;
+}
+
+.status.มา {
+  color: green;
+  font-weight: bold;
+}
+
+.status.สาย {
+  color: orange;
+  font-weight: bold;
+}
+
+.status.ขาด {
+  color: red;
+  font-weight: bold;
+}
+
+.date-picker {
+  padding: 0.5rem;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.attendance-summary {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  background-color: #f0f0f0;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+input,select{
+  margin: 10px;
+  font-family: 'Sarabun', sans-serif;
+  font-size: 15px;
+  border-radius: 0.5rem;
+  padding: auto;
+}

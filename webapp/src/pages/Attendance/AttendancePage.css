@@ -1,0 +1,143 @@
+.attendance-container {
+  display: flex;
+  margin-top: 65px;
+  gap: 2rem;
+  font-family: 'Sarabun', sans-serif;
+}
+
+.attendance-content {
+  padding: 1.5rem;
+  flex: 1;
+  background-color: #f4fff4;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.attendance-title {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: #065f46;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.attendance-header {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  justify-content: baseline;
+}
+
+.attendance-header input,
+.attendance-header select {
+  border: 1px solid #e5e7eb;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  color: #4b5563;
+  background-color: #fff;
+  transition: border-color 0.3s;
+}
+
+.attendance-header input:focus,
+.attendance-header select:focus {
+  border-color: #059669;
+  outline: none;
+}
+
+.attendance-table {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.attendance-table th,
+.attendance-table td {
+  border: 1px solid #e5e7eb;
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+.attendance-table thead {
+  background-color: #d0f0d0;
+  font-weight: bold;
+}
+
+.row-green {
+  background-color: #86efac;
+}
+
+.row-yellow {
+  background-color: #fde68a;
+}
+
+.row-blue {
+  background-color: #93c5fd;
+}
+
+.row-red {
+  background-color: #f87171;
+}
+
+.status-buttons {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.status-buttons button {
+  padding: 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  font-weight: 600;
+  color: #4b5563;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Sarabun', sans-serif;
+}
+
+.status-buttons button:hover {
+  background-color: #e5e7eb;
+}
+
+.status-buttons .active {
+  background-color: #059669;
+  color: white;
+  border-color: #059669;
+}
+
+.save-button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.save-button {
+  background-color: #059669;
+  color: white;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: 'Sarabun', sans-serif;
+
+}
+
+.save-button:hover {
+  background-color: #047857;
+}
+
+.save-button:focus {
+  outline: none;
+}
+
+textarea{
+    border-radius: 0.5rem;
+    font-family: 'Sarabun', sans-serif;
+}

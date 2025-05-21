@@ -1,0 +1,71 @@
+.stddashboard-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 97%;
+  height: 60px;
+  background-color: #ff6b00;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 1001;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-family: 'Sarabun', sans-serif;
+}
+
+.stddashboard-header-left {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
+
+.stddashboard-menu-button {
+  background: none;
+  border: none;
+  font-size: 1.8em;
+  color: white;
+  cursor: pointer;
+  margin-right: 15px;
+  transition: transform 0.3s ease;
+}
+
+.stddashboard-menu-button:hover {
+  transform: scale(1.1);
+}
+
+.stddashboard-header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.stddashboard-user-info {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.stddashboard-user-id {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-left: 3px;
+}
+
+.logout-button {
+  background: none;
+  border: none;
+  margin-left: 12px;
+  cursor: pointer;
+  color: #ffffff; /* หรือสีตามธีม */
+  display: flex;
+  align-items: center;
+}
+
+.logout-button:hover {
+  color: #ff5f5f;
+}

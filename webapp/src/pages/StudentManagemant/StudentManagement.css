@@ -1,0 +1,92 @@
+.student-container {
+  background-color: #f4fff4;
+  padding: 30px;
+  margin: auto;
+  max-width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Sarabun', sans-serif;
+  margin-top: 50px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #2e7d32;
+}
+
+.add-button {
+  background-color: #28a745;
+  color: white;
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin: 15px 2px;
+  font-family: 'Sarabun', sans-serif;
+}
+
+.add-button:hover {
+  background-color: #218838;
+}
+
+.student-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+.student-table th,
+.student-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.student-table thead {
+  background-color: #d0f0d0;
+  font-weight: bold;
+}
+
+
+.edit-button {
+  background-color: #007bff;
+  color: white;
+  padding: 6px 12px;
+  margin-right: 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Sarabun', sans-serif;
+}
+
+.edit-button:hover {
+  background-color: #0056b3;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Sarabun', sans-serif;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}
+
+.filter-section {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 15px;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.filter-section label {
+  font-size: 1rem;
+}
+

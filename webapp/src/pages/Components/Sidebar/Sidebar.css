@@ -1,0 +1,40 @@
+/* Sidebar.css */
+
+.sidebar {
+  position: fixed;
+  top: 60px;
+  left: -250px; /* ซ่อน Sidebar เริ่มต้น */
+  width: 250px;
+  height: calc(100% - 60px);
+  background-color: white;
+  color: #333;
+  overflow-y: auto;
+  transition: left 0.3s ease;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  font-family: 'Sarabun', sans-serif;
+  font-size: 16px;
+}
+
+.sidebar.visible {
+  left: 0;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 10px;
+}
+
+.sidebar ul li {
+  padding: 20px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, padding-left 0.3s ease;
+}
+
+.sidebar ul li:hover {
+  background-color: #f8f8f8;
+  color: #ff6600;
+  padding-left: 10px;
+}
