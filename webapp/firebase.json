@@ -1,7 +1,7 @@
 {
   "hosting": {
-    "public": "dist", 
-    "site": "assignment-6-unging2jeng", 
+    "public": "dist/webapp",              
+    "site": "assignment6-31c16",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -9,8 +9,12 @@
     ],
     "rewrites": [
       {
-        "source": "**",
-        "destination": "/index.html"
+        "source": "/webapp/**",
+        "destination": "/webapp/index.html"
+      },
+      {
+        "source": "/",
+        "destination": "/webapp/index.html"
       }
     ]
   }

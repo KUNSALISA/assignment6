@@ -60,13 +60,10 @@ pipeline {
         COMPOSE_FILE = 'compose.yml'
     }
 
-
-
-
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/Nichakorn25/assignment-6-unging2jeng.git'
+                git branch: 'main', url: 'https://github.com/KUNSALISA/assignment6.git'
             }
         }
 
